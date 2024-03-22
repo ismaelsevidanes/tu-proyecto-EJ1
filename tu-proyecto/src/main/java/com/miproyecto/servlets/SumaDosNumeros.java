@@ -34,7 +34,8 @@ public class SumaDosNumeros extends HttpServlet {
         Integer numero1 = Integer.parseInt(numero1Str);
         Integer numero2 = Integer.parseInt(numero2Str);
 	    
-	      response.getWriter().print(numero1 + numero2);	}
+	      response.getWriter().print(numero1 + numero2);	
+	      }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
