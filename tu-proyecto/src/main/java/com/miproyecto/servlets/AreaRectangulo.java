@@ -6,18 +6,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 /**
- * Servlet implementation class Saludo
+ * Servlet implementation class AreaRectangulo
  */
-@WebServlet("/saludo")
-public class Saludo extends HttpServlet {
+@WebServlet("/arearectangulo")
+public class AreaRectangulo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Saludo() {
+    public AreaRectangulo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,10 +26,12 @@ public class Saludo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nombre= request.getParameter("nombre");
-	    String apellido= request.getParameter("apellido");		
-	      response.getWriter().print("Hola " + nombre + apellido);
-	      
+		double base = Double.parseDouble(request.getParameter("base"));
+        double altura = Double.parseDouble(request.getParameter("altura"));
+        
+        double area = base * altura;
+        
+	    response.getWriter().print("El area del rectangulo es:  " + area);
 	}
 
 	/**

@@ -7,17 +7,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Servlet implementation class Saludo
- */
-@WebServlet("/saludo")
-public class Saludo extends HttpServlet {
+@WebServlet("/tiempoviaje")
+public class TiempoViaje extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Saludo() {
+    public TiempoViaje() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,10 +24,12 @@ public class Saludo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nombre= request.getParameter("nombre");
-	    String apellido= request.getParameter("apellido");		
-	      response.getWriter().print("Hola " + nombre + apellido);
-	      
+		double distancia = Double.parseDouble(request.getParameter("distancia"));
+        double velocidad = Double.parseDouble(request.getParameter("velocidad"));
+        
+        double tiempo = distancia / velocidad;
+        
+	    response.getWriter().print("El tiempo del viaje es de:  " + tiempo);
 	}
 
 	/**

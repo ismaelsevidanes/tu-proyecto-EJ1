@@ -7,17 +7,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Servlet implementation class Saludo
- */
-@WebServlet("/saludo")
-public class Saludo extends HttpServlet {
+
+@WebServlet("/categorizacionedades")
+public class CategorizacionEdades extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Saludo() {
+    public CategorizacionEdades() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,10 +25,21 @@ public class Saludo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nombre= request.getParameter("nombre");
-	    String apellido= request.getParameter("apellido");		
-	      response.getWriter().print("Hola " + nombre + apellido);
-	      
+		Integer edad = Integer.parseInt(request.getParameter("edad"));
+        String categoria;
+		
+        
+        if (edad < 12) {
+            categoria = "Infante";
+        } else if (edad >= 12 && edad <= 17) {
+            categoria = "Adolescente";
+        } else if (edad >= 18 && edad <= 60) {
+            categoria = "Adulto";
+        } else {
+            categoria = "Anciano";
+        }
+        
+	    response.getWriter().print("Tu categoria de edad es:  " + categoria);
 	}
 
 	/**

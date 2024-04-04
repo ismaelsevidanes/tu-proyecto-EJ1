@@ -7,17 +7,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Servlet implementation class Saludo
- */
-@WebServlet("/saludo")
-public class Saludo extends HttpServlet {
+@WebServlet("/mayortres")
+public class MayorTres extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Saludo() {
+    public MayorTres() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,10 +24,26 @@ public class Saludo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nombre= request.getParameter("nombre");
-	    String apellido= request.getParameter("apellido");		
-	      response.getWriter().print("Hola " + nombre + apellido);
-	      
+		  double num1 = Double.parseDouble(request.getParameter("num1"));
+	        double num2 = Double.parseDouble(request.getParameter("num2"));
+	        double num3 = Double.parseDouble(request.getParameter("num3"));
+	        
+	        double mayor;
+	        if(num1>num2) {
+	        	if(num1>num3) {
+	        		mayor = num1;
+	        	} else {
+	        		mayor = num3;
+	        	}
+	        } else {
+	        	if(num2>num3) {
+	        		mayor=num2;
+	        	} else {
+	        		mayor=num3;
+	        	}
+	        }
+        
+	    response.getWriter().print("El numero mayor es:  " + mayor);
 	}
 
 	/**

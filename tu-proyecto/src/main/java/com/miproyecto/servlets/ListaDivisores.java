@@ -7,17 +7,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Servlet implementation class Saludo
- */
-@WebServlet("/saludo")
-public class Saludo extends HttpServlet {
+
+@WebServlet("/listadivisores")
+public class ListaDivisores extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Saludo() {
+    public ListaDivisores() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,11 +25,16 @@ public class Saludo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nombre= request.getParameter("nombre");
-	    String apellido= request.getParameter("apellido");		
-	      response.getWriter().print("Hola " + nombre + apellido);
-	      
-	}
+	       response.setContentType("text/html");
+	        int numero = Integer.parseInt(request.getParameter("numero"));
+
+	        response.getWriter().print("Lista de divisores de " + numero + ":<br>");
+	        for (int i = 1; i <= numero; i++) {
+	            if (numero % i == 0) {
+	                response.getWriter().print(i + "<br>");
+	            }
+	        }
+	    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,5 +44,4 @@ public class Saludo extends HttpServlet {
 	    // response.getWriter().print("entrada al doPost");
 		doGet(request, response);
 	}
-
 }
